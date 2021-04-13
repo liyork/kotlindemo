@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: io.vertx:vertx-lang-kotlin:4.0.2">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/intellijRepository/io/vertx/vertx-lang-kotlin/4.0.2/vertx-lang-kotlin-4.0.2.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$USER_HOME$/intellijRepository/io/vertx/vertx-lang-kotlin/4.0.2/vertx-lang-kotlin-4.0.2-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$USER_HOME$/intellijRepository/io/vertx/vertx-lang-kotlin/4.0.2/vertx-lang-kotlin-4.0.2-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
