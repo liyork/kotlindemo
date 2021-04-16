@@ -4,13 +4,13 @@ package com.wolf.kotlin
 // 只包含数据的类
 data class User2(val name: String, val age: Int)
 // 编译器会自动的从主构造函数中根据所有声明的属性提取以下函数(但如果这些函数在类中已经被明确定义了，或者从超类中继承而来，就不再会生成)
-// equals() / hashCode()/toString()/componentN()/copy()
+// getter、setter/equals() / hashCode()/toString()/componentN()能够保证数据类可以使用解构声明/copy()浅拷贝
 
 // 为了保证生成代码的一致性以及有意义，数据类需要满足以下条件：
 // 主构造函数至少包含一个参数。
 //所有的主构造函数的参数必须标识为val 或者 var ;
 //数据类不可以声明为 abstract, open, sealed 或者 inner;
-//数据类不能继承其他类 (但是可以实现接口)。
+//数据类不能继承其他类 (但是可以实现接口)。--这个如何实现共享呢？类似java的继承属性过来或者go的嵌套类则继承属性?
 
 // copy() 函数的实现类似：fun copy(name: String = this.name, age: Int = this.age) = User(name, age)
 

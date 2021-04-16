@@ -187,7 +187,7 @@ fun main() {
 
 //    testNull()
 
-    testNull2()
+//    testNull2()
 
 //    testElvis()
 
@@ -201,7 +201,7 @@ fun main() {
 
 //    testMap()
 
-//    testAs()
+    testAs()
 
 //    testConstAndVar()
 
@@ -219,6 +219,10 @@ fun testAs() {
     val b1 = p1 as? Student
     val b2 = p1 as? Person9
     println("$a1, $a2, $b1, $b2")
+
+    val a: Any? = null
+    val b = a as? Int
+    println(b)
 }
 
 fun testMap() {

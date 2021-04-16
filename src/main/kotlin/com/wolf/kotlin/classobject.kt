@@ -16,7 +16,7 @@ class Runoob {
 // 空类
 class Empty
 
-// 这个是kotlin的有些奇怪的地方
+// Kotlin中，声明类的同时可以方便的直接声明构造方法等参数
 // 类可以有一个主构造器，一个或多个次构造器，主构造器是类头部的一部分，位于类名之后
 class Person constructor(firstName: String) {
 }
