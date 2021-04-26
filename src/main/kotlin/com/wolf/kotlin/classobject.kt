@@ -282,3 +282,23 @@ private fun testConstruct() {
     val site = Runoob()// 调用构造函数创建类实例
     println(site.name)// 使用属性
 }
+
+//todo 不支持调用父类的二级构造函数?
+//open class SuperClass() {
+//    lateinit var firstName: String
+//
+//    // 二级构造函数
+//    protected constructor(firstName: String) : this() {
+//        this.firstName = firstName
+//    }
+//}
+//
+//
+//class DeriveClass() : SuperClass() {
+//
+//    // 二级构造函数
+//    constructor(firstName: String) : super(firstName) {
+//        this.firstName = firstName
+//    }
+//}
+

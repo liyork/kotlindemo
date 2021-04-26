@@ -14,23 +14,6 @@ data class User2(val name: String, val age: Int)
 
 // copy() 函数的实现类似：fun copy(name: String = this.name, age: Int = this.age) = User(name, age)
 
-fun main() {
-    val jack = User2(name = "jack", age = 1)
-    val olderJack = jack.copy(age = 2)
-    println(jack)
-    println(olderJack)
-
-    // 组件函数允许数据类在解构声明中使用
-    val jane = User2("jane", 35)
-    // 解构声明
-    val (name, age) = jane
-    println("$name, $age years of age")
-
-    val pair = Pair("a", 1)
-    val triple = Triple(1, 2, 3)
-    println(pair)
-    println(triple)
-}
 
 // 密封类
 // 用来表示受限的类继承结构：当一个值为有限几种的类型, 而不能有任何其他类型时
@@ -57,4 +40,70 @@ fun eval(expr: Expr): Double = when (expr) {
     is Expr.Sum -> eval(expr.e1) + eval(expr.e2)
     Expr.NotANumber -> Double.NaN
     // 不再需要 `else` 子句，因为我们已经覆盖了所有的情况
+}
+
+private fun testBase() {
+    val jack = User2(name = "jack", age = 1)
+    val olderJack = jack.copy(age = 2)
+    println(jack)
+    println(olderJack)
+
+    // 组件函数允许数据类在解构声明中使用
+    val jane = User2("jane", 35)
+    // 解构声明
+    val (name, age) = jane
+    println("$name, $age years of age")
+
+    val pair = Pair("a", 1)
+    val triple = Triple(1, 2, 3)
+    println(pair)
+    println(triple)
+}
+
+data class BaseData(val stat: Int, val msg: String)
+data class Result1(val stat: Int, val msg: String, val age: Int)
+data class Result2(val baseData: BaseData, val age: Int)
+
+open class BaseData3(open val stat: Int, open val msg: String)
+data class Result3(override val stat: Int, override val msg: String, val age: Int) : BaseData3(stat, msg)
+
+open class BaseData4 {
+    var stat: Int? = null
+    var msg: String? = null
+
+}
+
+data class Result4(val age: Int) : BaseData4()
+
+fun <T : BaseData4> T.setBase(stat: Int?, msg: String? = null): T {
+    this.stat = stat
+    this.msg = msg
+    return this
+}
+
+private fun testReuse() {
+    // 这样会有很多重复字段
+    Result1(1, "x", 1)
+
+    // 使用引用，使用时费点劲，但是确实减少了重复
+    Result2(BaseData(1, "x"), 1)
+
+    // 使用继承，但是这样确实重复定义了，感觉kotlin的意思是，这个要进行覆盖而不是重用
+    val result3 = Result3(1, "x", 1)
+    println("${result3.stat},${result3.msg},${result3.age}")
+
+    // 这样应该是是比较好，但是就是赋值时麻烦些，想着能不能给set返回this？那样用stream方式进行设定但是不能返回this。。。
+    val result4 = Result4(1)
+    result4.stat = 1
+    result4.msg = "x"
+    println("${result4.stat},${result4.msg},${result4.age}")
+    // 可以扩展一下，只能扩展，不能将方法放到父类，因为那样返回的this只能是父类！
+    val result5 = Result4(1).setBase(1, "x")
+    println("${result5.stat},${result5.msg},${result5.age}")
+}
+
+fun main() {
+//    testBase()
+
+    testReuse()
 }

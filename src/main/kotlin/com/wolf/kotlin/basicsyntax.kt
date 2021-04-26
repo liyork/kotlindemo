@@ -117,6 +117,12 @@ fun testNull2() {
 //    lNull.map {}
 }
 
+fun testNull3() {
+    var arg1: String? = null
+    checkNotNull(arg1) { "xxxx" }
+
+}
+
 // Elvis 操作符表达,
 // 如果 ?: 左侧表达式非空，elvis 操作符就调用其左侧表达式，否则调用右侧表达式。
 // 当且仅当左侧为空时，才会对右侧表达式求值
@@ -189,6 +195,8 @@ fun main() {
 
 //    testNull2()
 
+    testNull3()
+
 //    testElvis()
 
 //    testIs("1")
@@ -201,7 +209,7 @@ fun main() {
 
 //    testMap()
 
-    testAs()
+//    testAs()
 
 //    testConstAndVar()
 
