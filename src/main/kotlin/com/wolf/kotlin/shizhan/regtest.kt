@@ -13,7 +13,9 @@ fun main() {
 
 //    testFind()
 
-    testUseJavaReg()
+//    testUseJavaReg()
+
+    testGroup()
 }
 
 private fun testUseJavaReg() {
@@ -79,4 +81,18 @@ private fun testCreate() {
     val r2 = Regex("[a-z]+", RegexOption.IGNORE_CASE)
 
     val r3 = "[A-Z]+".toRegex()
+}
+
+private fun testGroup() {
+    val re = Regex("([A-Za-z]+)( |\\d+/)(\\d+/\\d+)")
+    // xxxx 0/4
+    val p = re.toPattern()
+    val matcher = p.matcher("abcd1/0/25")
+//    val matcher = p.matcher("abcd 0/25")
+    // xxxx/0/25
+    if (matcher.find()) {
+        println(matcher.group(1).substring(0, 2))
+        println(matcher.group(2))
+        println(matcher.group(3))
+    }
 }
