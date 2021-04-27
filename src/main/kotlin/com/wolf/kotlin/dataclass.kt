@@ -4,7 +4,7 @@ package com.wolf.kotlin
 // 只包含数据的类
 data class User2(val name: String, val age: Int)
 // 编译器会自动的从主构造函数中根据所有声明的属性提取以下函数(但如果这些函数在类中已经被明确定义了，或者从超类中继承而来，就不再会生成)
-// getter、setter/equals() / hashCode()/toString()/componentN()能够保证数据类可以使用解构声明/copy()浅拷贝
+// getter、setter/equals() / hashCode比较属性而不是地址/toString输出属性信息而不是地址/componentN()能够保证数据类可以使用解构声明/copy()浅拷贝
 
 // 为了保证生成代码的一致性以及有意义，数据类需要满足以下条件：
 // 主构造函数至少包含一个参数。
@@ -102,8 +102,19 @@ private fun testReuse() {
     println("${result5.stat},${result5.msg},${result5.age}")
 }
 
+fun testGetComponent() {
+    val user2 = User2("aa", 1)
+    println(user2.component1())
+    println(user2.component2())
+    val (name, age) = user2// 解构声明
+    println("$name, $age")
+}
+
 fun main() {
 //    testBase()
 
-    testReuse()
+//    testReuse()
+
+    testGetComponent()
 }
+

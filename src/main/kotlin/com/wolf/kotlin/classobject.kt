@@ -30,7 +30,7 @@ class Person2 {
     var name: String = "a"// 默认实现get/set
 
     var lastName: String = "zhang"
-        get() = field.toUpperCase()// 重写了get方法
+        get() = field.toUpperCase()// 重写了get方法，用使用field解决重复调用自己get造成死循环问题
         set
 
     var no: Int = 100
