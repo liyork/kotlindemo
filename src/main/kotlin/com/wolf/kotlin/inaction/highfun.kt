@@ -10,7 +10,7 @@ import kotlin.concurrent.withLock
 enum class Delivery { STANDARD, EXPEDITED }
 enum class OS { WINDOWS, LINUX, MAC, IOS, ANDROID }
 
-// 定义一个内联函数
+// 定义一个内联函数,当一个函数被声明为 inline 时，它的函数体是内联的——换句话说，函数体会被直接替换导函数被调用的地方，而不是被正常调用。
 inline fun <T> synchronized(lock: Lock, action: () -> T): T {
     lock.lock()
     try {
@@ -213,6 +213,7 @@ fun main() {
     }
     lookForAlice1(people)
 
+    // 规则很简单：return 从最近使用 fun 关键字声明的函数返回。
     // 用一个标签实现局部返回
     fun lookForAlice2(people: List<Person1>) {
         people.forEach label@{// 给lambda表达式加上标签

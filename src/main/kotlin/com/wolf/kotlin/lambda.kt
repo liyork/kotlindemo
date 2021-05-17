@@ -79,7 +79,7 @@ private fun lambdaBase() {
 fun lambdaReturn() {
     val arr = listOf("java", "kotlin")
     val buffer = with(StringBuffer()) {
-        arr.forEach {
+        arr.forEach {// foreach是inline所以会被编译到这里，然后return就是到fun那里了
             if (it == "kotlin") {
                 return@with this.append(it)
             }
@@ -255,7 +255,7 @@ fun lambdaEvolve() {
         Foo4()
     })
 
-    // 由于lambda在最后，就可以放到括号外
+    // 由于lambda在方法的最后，就可以放到括号外
     test1() {
         println(1111)
         Foo4()
@@ -291,7 +291,7 @@ fun lambdaEvolve() {
 //        System.out.println(111);
 //    });
 
-    // kotlin方式，简化了不少
+    // kotlin方式，简化了不少，自动创建Runnable，若是此内部类中没有引用外界变量则可以重用
     Thread {
         println()
     }

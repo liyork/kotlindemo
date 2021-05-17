@@ -12,7 +12,7 @@ import java.lang.IllegalArgumentException
 
 fun main() {
 
-//    compareDigit()
+    compareDigit()
 
 //    typeConvert()
 
@@ -22,7 +22,7 @@ fun main() {
 
 //    arrayOpt()
 
-    stringOpt()
+//    stringOpt()
 
 //    stringTempOpt()
 
@@ -151,5 +151,10 @@ private fun compareDigit() {
     println(boxedA === anotherBoxedA)
     // 比较值
     println(boxedA == anotherBoxedA)
+
+    val aStr = "a"
+    val bStr = "a"
+    println(aStr == bStr)
+    println(aStr === bStr)
 }
 

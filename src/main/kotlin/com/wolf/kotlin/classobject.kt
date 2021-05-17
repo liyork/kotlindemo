@@ -74,6 +74,10 @@ class Person4 public constructor(var firstName: String, var lastName: String) {
     init {
         println("FirstName is $firstName")
     }
+
+    override fun toString(): String {
+        return "Person4(firstName='$firstName', lastName='$lastName')"
+    }
 }
 
 class Person5 {

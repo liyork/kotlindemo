@@ -7,6 +7,7 @@ fun main() {
 
     whenOpt1()
     whenOpt2()
+    whenOpt3()
 }
 
 fun whenOpt2() {
@@ -32,6 +33,28 @@ fun whenOpt1() {
             print("x 不是1或2")
         }
     }
+}
+
+fun whenOpt3() {
+    val a = ArrayList<ArrayList<Int>>()
+    println(a is List<*>)
+
+    val data = test()
+    when (data) {
+        (data as? List<*>) -> {
+            println(111)
+        }
+        else -> {
+            println(222)
+        }
+    }
+}
+
+fun test(): Any? {
+//    return 1
+//    return arrayListOf<String>()
+//    return ArrayList<String>()
+    return ArrayList<Int>()
 }
 
 fun getX(): Any {
