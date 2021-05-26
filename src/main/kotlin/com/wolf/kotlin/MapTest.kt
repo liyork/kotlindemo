@@ -38,4 +38,9 @@ fun main() {
     val mapNull: Any? = null
     val a = mapNull as Map<String, String>?// aa as XX?，即使aa为空也没有关系
     println(a)
+
+    val listOf = listOf(1, 2, 3)
+    // flatMap中的闭包是k->Iterable<R>的，最后出来的是一个集合而不是集合的集合
+    val flatMap = listOf.flatMap { listOf(it + 1) }
+    println(flatMap)
 }

@@ -207,7 +207,7 @@ Kotiin 不会自 动
 
 Any 类型是 Kotiin 所有非空类
 型的超类型（非空类型 的根 〉
-在底层， Any 类型对应 j ava.la呵 .Object
+在底层， Any 类型对应 java.lang.Object
 
 Koti in 中的 Unit 类型完成了 Java 中的 void 一样的功能
 
